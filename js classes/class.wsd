@@ -1,0 +1,19 @@
+@startuml
+
+title Properties / Methods - Class Diagram
+
+class classA {
+  .. Field Examples ..
++{static} staticAtributte
+
+- privateAttribute
++ publicAttribute
+
+  .. Method Examples ..
++{static} StaticMethod()
+
+- privateAttribute()
++ publicAttribute()
+}
+
+@enduml
