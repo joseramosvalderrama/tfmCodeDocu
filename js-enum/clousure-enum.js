@@ -1,25 +1,23 @@
-function createSeasonEnum(){
-    function createEnum(season){
-        let name = season;
-        function methodA(){
-            return "Season: " + name;
-        }
-        return{
-            methodA
-        }
-    }
+const SeasonEnum = Object.freeze({
+    Winter: createSeasonEnum("Winter"),
+    Summer: createSeasonEnum("Summer"),
+    Autumn: createSeasonEnum("Autumn"),
+    Spring: createSeasonEnum("Spring"),
+});
 
+function createSeasonEnum(season){
+    let name = season;
+    function methodA(){
+        return "Season: " + name;
+    }
     return{
-        Winter: createEnum("Winter"),
-        Summer: createEnum("Summer"),
-        Autumn: createEnum("Autumn"),
-        Spring: createEnum("Spring"),
+        methodA
     }
 }
 
-const winter = createSeasonEnum().Winter;
-const summer = createSeasonEnum().Summer;
-const autumn = createSeasonEnum().Autumn;
-const spring = createSeasonEnum().Spring;
+const winter = SeasonEnum.Winter;
+const summer = SeasonEnum.Summer;
+const autumn = SeasonEnum.Autumn;
+const spring = SeasonEnum.Spring;
 
 console.log(summer.methodA());
