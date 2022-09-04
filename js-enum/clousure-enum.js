@@ -1,10 +1,11 @@
 function createSeasonEnum(){
     function createEnum(season){
+        let name = season;
+        function methodA(){
+            return "Season: " + name;
+        }
         return{
-            name: season,
-            methodA: function(){
-                return "Season: " + this.name;
-            }
+            methodA
         }
     }
 
@@ -21,4 +22,4 @@ const summer = createSeasonEnum().Summer;
 const autumn = createSeasonEnum().Autumn;
 const spring = createSeasonEnum().Spring;
 
-console.log(winter.methodA());
+console.log(summer.methodA());
