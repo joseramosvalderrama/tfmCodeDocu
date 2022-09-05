@@ -1,4 +1,5 @@
 // Reference: https://www.w3schools.com/JS/js_object_constructors.asp
+// https://www.geeksforgeeks.org/how-inheritance-works-in-constructor-functions-in-javascript/
 
 function constructorFunctionA() {
     this.publicAttribute = "This is a public attribute.";
