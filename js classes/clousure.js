@@ -3,34 +3,37 @@
 
 function clousureA() {
     let privateAttribute = "This is a private attribute.";
-    let publicAttribute = "This is a public attribute";
     
     function publicMethod() {
-        console.log("This is a public method. ")
+        console.log("This is a public method. ");
+        console.log(privateAttribute);
+        privateFunction();
     }
 
-    function privateMethod() {
+    function privateFunction() {
         console.log("This is a private method.");
+        console.log(privateAttribute);
     }
-
-    function getPrivateAttribute() {
-        return privateAttribute;
-    }
-
-    privateMethod();
 
     return {
-        publicAttribute,
-        publicMethod,
-        getPrivateAttribute
+        publicMethod
     }
 
 }
 
-let objA = clousureA();
-console.log("Public attribute: " + objA.publicAttribute);
-console.log("Private attribute: " + objA.privateAttribute);
+
+clousureA.publicStaticMethod = function(){
+    console.log("This is a static method.");
+}
+clousureA.STATIC_FIELD = "This is a static field";
+
+console.log(clousureA.STATIC_FIELD);
+clousureA.publicStaticMethod();
+let objA = new clousureA();
+console.log(objA.publicAttribute);
+//console.log(objA.#privateAttribute); // Will print undefined
 objA.publicMethod();
+// objA.privateMethod(); // Will throw not a function error
 
 // I couldn't figure out inheritance using clousures. Closest thing seems to be using prototypes which is messy
 // Implement all public methods and attributes on the parent prototype

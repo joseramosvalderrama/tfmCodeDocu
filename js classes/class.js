@@ -1,9 +1,10 @@
 // Reference: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/Private_class_fields
 
-class classA {
+class ClassA {
 
     static STATIC_FIELD = "This is a static field";
     #privateAttribute; // Private attributes must be defined prior to use
+    publicAttribute;
 
     constructor () {
         this.publicAttribute = "This is a public attribute.";
@@ -11,7 +12,8 @@ class classA {
     }
 
     publicMethod() {
-        console.log("This is a public method. ")
+        console.log("This is a public method. ");
+        this.#privateMethod();
     }
 
     #privateMethod() {
