@@ -16,6 +16,10 @@ class ClassA {
         this.#privateMethod();
     }
 
+    publicMethod2() {
+        console.log("This is another public method. ");
+    }
+
     #privateMethod() {
         console.log("This is a private method.");
     }
@@ -26,15 +30,17 @@ class ClassA {
 
 }
 
-console.log(classA.STATIC_FIELD);
-classA.publicStaticMethod();
-let objA = new classA();
+console.log(ClassA.STATIC_FIELD);
+ClassA.publicStaticMethod();
+let objA = new ClassA();
 console.log(objA.publicAttribute);
 //console.log(objA.#privateAttribute); // Will print undefined
 objA.publicMethod();
 // objA.privateMethod(); // Will throw not a function error
 
-class classB extends classA {
+console.log('\nInheritance\n');
+
+class ClassB extends ClassA {
 
     constructor() {
         super();
@@ -43,8 +49,19 @@ class classB extends classA {
     publicMethod() {
         console.log("This is an overriden inherited public method.");
     }
+
+    publicMethod2() {
+        console.log("This is an augmentated inherited public method.");
+        super.publicMethod2();
+    }
+
+    publicMethod3() {
+        console.log("This is a new child-exclusive public method.")
+    }
 }
 
-classB.publicStaticMethod();
-let objB = new classB();
+ClassB.publicStaticMethod();
+let objB = new ClassB();
 objB.publicMethod();
+objB.publicMethod2();
+objB.publicMethod3();
