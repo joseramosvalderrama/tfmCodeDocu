@@ -1,6 +1,6 @@
 // Reference: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures
 
-// Clousures do not support public attributes
+// Clousures do not propertly support public attributes
 function ClousureA() {
 
     let privateAttribute = "This is a private attribute.";
