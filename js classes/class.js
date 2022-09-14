@@ -22,6 +22,7 @@ class ClassA {
 
     #privateMethod() {
         console.log("This is a private method.");
+        console.log(this.#privateAttribute);
     }
 
     static publicStaticMethod() {
@@ -56,7 +57,7 @@ class ClassB extends ClassA {
     }
 
     publicMethod3() {
-        console.log("This is a new child-exclusive public method.")
+        console.log("This is a new child-exclusive public method.");
     }
 }
 

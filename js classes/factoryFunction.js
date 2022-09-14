@@ -2,11 +2,12 @@
 // https://www.geeksforgeeks.org/what-are-factory-functions-in-javascript/
 // https://www.javascripttutorial.net/javascript-factory-functions/
 
-function createA() { // This design doesn't seem to allow public attributes to be called from private methods
-    let privateAttribute = "A This is a private attribute.";
+function CreateA() { 
 
-    function privateMethod() {
-        console.log("A This is a private method.");
+    // Attempting to use private attributes or functions like these turn the pattern into a pseudo clousure
+    let privateAttribute = "A This is a private attribute.";
+    function privateFunction() {
+        console.log("A This is a private function.");
         console.log(privateAttribute);
     }
 
@@ -14,32 +15,52 @@ function createA() { // This design doesn't seem to allow public attributes to b
         publicAttribute: "A This is a public attribute.",
         publicMethod: function () { 
             console.log("A This is a public method.");
-            privateMethod();        
-        } 
+            privateFunction();        
+        },
+        publicMethod2: function () {
+            console.log("This is another public method. ");
+        }
     }
 }
+CreateA.publicStaticMethod = function() {
+    console.log("This is a static method.");
+}
+CreateA.STATIC_FIELD = "This is a static field";
 
-let objA = createA();
+console.log(CreateA.STATIC_FIELD);
+CreateA.publicStaticMethod();
+let objA = new CreateA();
 console.log(objA.publicAttribute);
 objA.publicMethod();
 
-// Inheritance, showcasing the alternative non-return-contained design
+console.log('\nInheritance\n');
 
-function createB() {
-    let B = createA();
+function CreateB() {
+    let B = CreateA();
 
     B.publicAttribute = "B This is an overriden public attribute."
 
-    function privateMethod() {
-        console.log(B.publicAttribute);
+    B.publicMethod = function () {
+        console.log("This is an overriden inherited public method.");
     }
 
-    B.publicMethod = function () {
-        console.log("B This is an overriden public method.");
-        privateMethod();
+    B.__publicMethod2 = B.publicMethod2;
+    B.publicMethod2 = function () {
+        console.log("This is an augmentated inherited public method.");
+        B.__publicMethod2();
+    }
+
+    B.publicMethod3 = function () {
+        console.log("This is a new child-exclusive public method.");
     }
 
     return B;
 }
-let objB = createB();
+CreateB.publicStaticMethod = CreateA.publicStaticMethod;
+CreateB.STATIC_FIELD = CreateA.STATIC_FIELD;
+
+CreateB.publicStaticMethod();
+let objB = CreateB();
 objB.publicMethod();
+objB.publicMethod2();
+objB.publicMethod3();
