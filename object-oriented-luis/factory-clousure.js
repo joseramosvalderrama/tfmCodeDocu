@@ -1,0 +1,18 @@
+const object = new Clazz(1);
+object.publicInstanceMethod();
+object.privateAttributeX = 666;
+console.log(`object.privateAttributeX: ${object.privateAttributeX}`);
+object.publicInstanceMethod();
+
+function Clazz(privateAttributeX) {
+    let privateAttributeY = 0;
+    this.publicInstanceMethod = function () {
+            privateFunction();
+            console.log(`privateAttributeX: ${privateAttributeX} - privateAttributeY: ${privateAttributeY}`);
+    }
+
+    function privateFunction() {
+        privateAttributeX++;
+        privateAttributeY++;
+    }
+}
