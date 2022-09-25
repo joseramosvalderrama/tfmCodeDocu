@@ -19,8 +19,17 @@ export default function createObjectB(parameter1, parameter2) {
     }
 
     return {
-        publicMethod1,
-        exclusiveMethod,
-        publicMethod2,
+        ...returned,
+        ...{
+            publicMethod1,
+            exclusiveMethod,
+            publicMethod2,
+        }
     }
 }
+
+let test = createObjectB(5, 6);
+test.publicMethod1();
+test.publicMethod2();
+test.exclusiveMethod();
+test.parentExclusiveMethod();

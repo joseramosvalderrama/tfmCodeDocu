@@ -15,8 +15,14 @@ export default function createObjectA(parameter) {
         console.log(`method2: privateAttributeX: ${privateAttributeX}`);
     }
 
+    function parentExclusiveMethod() {
+        privateMethod();
+        console.log(`PARENT EXCLUSIVE: privateAttributeX: ${privateAttributeX}`);
+    }
+
     return {
         publicMethod1,
-        publicMethod2
+        publicMethod2,
+        parentExclusiveMethod
     }
 }
