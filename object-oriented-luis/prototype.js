@@ -1,3 +1,7 @@
+// Prototype constructor function
+// Pro: public attributes, public methods defined on prototype are only replicated once on memory 
+// Limitations: No private attributes. No real private methods (must be functions), calling privateFunctions can be messy from different prototype methods. 
+
 function Clazz(parameter) {
     this.publicAttributeX = parameter;
     this.publicAttributeY = 0;

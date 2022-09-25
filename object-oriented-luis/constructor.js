@@ -4,6 +4,10 @@ object.publicAttributeX = 666;
 console.log(`object.publicAttributeX: ${object.publicAttributeX}`);
 object.publicInstanceMethod();
 
+// Constructor function
+// Pro: public attributes, public methods
+// Limitations: No private methods (must be functions, no 'this' context), no private attributes
+
 function Clazz(parameter) {
     this.publicAttributeX = parameter;
     this.publicAttributeY = 0;
